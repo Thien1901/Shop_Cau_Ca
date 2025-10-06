@@ -1,7 +1,18 @@
 /// <reference types="../vite-env.d.ts" />
 
-// Production URL - hard-coded to avoid Vercel build cache issues
-const API_URL = 'https://shop-cau-ca.onrender.com/api';
+// API URL with environment support
+const getApiUrl = () => {
+  // Check if running in Docker (backend service name)
+  if (window.location.hostname === 'localhost' && window.location.port === '3000') {
+    // Docker Compose: frontend container connects to backend container
+    return 'http://localhost:5000/api';
+  }
+  
+  // Production - Vercel deployment
+  return 'https://shop-cau-ca.onrender.com/api';
+};
+
+const API_URL = getApiUrl();
 
 // Helper function to get auth token
 const getAuthToken = (): string | null => {
