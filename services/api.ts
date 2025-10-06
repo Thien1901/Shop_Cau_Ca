@@ -1,6 +1,9 @@
 /// <reference types="../vite-env.d.ts" />
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const API_URL = import.meta.env.VITE_API_URL || 
+  (import.meta.env.MODE === 'production' 
+    ? 'https://shop-cau-ca.onrender.com/api'
+    : 'http://localhost:5000/api');
 
 // Helper function to get auth token
 const getAuthToken = (): string | null => {
