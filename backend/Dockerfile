@@ -16,9 +16,8 @@ COPY . .
 # Build TypeScript
 RUN npm run build
 
-# Keep tsx for seed script, remove other devDependencies
-RUN npm install tsx --save
-RUN npm prune --production
+# Prune devDependencies but keep tsx for seed script
+RUN npm prune --production && npm install tsx --production
 
 # Expose port
 EXPOSE 5000
