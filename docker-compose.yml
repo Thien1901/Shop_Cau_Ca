@@ -1,4 +1,4 @@
-name: cau-ca-tv
+version: '3.8'
 
 services:
   # MongoDB Database
