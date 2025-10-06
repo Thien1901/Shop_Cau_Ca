@@ -1,9 +1,7 @@
 /// <reference types="../vite-env.d.ts" />
 
-const API_URL = import.meta.env.VITE_API_URL || 
-  (import.meta.env.MODE === 'production' 
-    ? 'https://shop-cau-ca.onrender.com/api'
-    : 'http://localhost:5000/api');
+// Production URL - hard-coded to avoid Vercel build cache issues
+const API_URL = 'https://shop-cau-ca.onrender.com/api';
 
 // Helper function to get auth token
 const getAuthToken = (): string | null => {
