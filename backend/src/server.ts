@@ -22,8 +22,15 @@ connectDB();
 
 // Middleware
 app.use(helmet());
+
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://shop-cau-ca.vercel.app',
+  process.env.FRONTEND_URL
+].filter((origin): origin is string => Boolean(origin));
+
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+  origin: allowedOrigins,
   credentials: true,
 }));
 app.use(morgan('dev'));
